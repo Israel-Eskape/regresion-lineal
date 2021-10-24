@@ -18,5 +18,9 @@ movieYear = movie.loc[:,['type','release_year']]
 
 dataCount = Counter(movieYear['release_year'])
 
-
+plt.bar(dataCount.keys(),dataCount.values())
+plt.xlabel('YEARS')
+plt.ylabel('COUNT')
+plt.title("MOVIE BY YEAR")
+plt.show()
 print(dataCount)
