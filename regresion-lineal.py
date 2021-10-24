@@ -18,10 +18,20 @@ movie = df.loc[df.loc[:,'type'] == 'Movie'] # Marca con true los valores de la c
 movieYear = movie.loc[:,['type','release_year']] #Obtengo solo las dos columnas type & release_year
 dataCount = Counter(movieYear['release_year']) #Cuenta cuantas veces se repiten cada valor en la columna release_year
 
+
+tvShow = df.loc[df.loc[:,'type'] == 'TV Show']
+tvShowYear = tvShow.loc[:,['type','release_year']]
+tvdataCounter = Counter(tvShowYear['release_year'])
+
+print(dataCount)
+print(tvdataCounter)
+
 #Se grafica las cantidades de movies por año
-plt.bar(dataCount.keys(),dataCount.values())
+plt.bar(dataCount.keys(),dataCount.values(),label = 'Movie',color = 'g')
+plt.bar(tvdataCounter.keys(),tvdataCounter.values(), label = 'Tv Show')
 plt.xlabel('YEARS')
 plt.ylabel('COUNT')
 plt.title("MOVIE BY YEAR")
+plt.legend()
 plt.show()
 print(dataCount)
