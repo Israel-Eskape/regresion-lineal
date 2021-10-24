@@ -13,11 +13,12 @@ df = pd.read_csv('netflix_titles.csv')
 #movie = df.loc[:,'type'] == 'Movie'
 #moviedf = df.loc[movie]
 
-movie = df.loc[df.loc[:,'type'] == 'Movie']
-movieYear = movie.loc[:,['type','release_year']]
+movie = df.loc[df.loc[:,'type'] == 'Movie'] # Marca con true los valores de la columna type que sean movie y después 
+                                            #obtiene todas las filas que están marcadas con true
+movieYear = movie.loc[:,['type','release_year']] #Obtengo solo las dos columnas type & release_year
+dataCount = Counter(movieYear['release_year']) #Cuenta cuantas veces se repiten cada valor en la columna release_year
 
-dataCount = Counter(movieYear['release_year'])
-
+#Se grafica las cantidades de movies por año
 plt.bar(dataCount.keys(),dataCount.values())
 plt.xlabel('YEARS')
 plt.ylabel('COUNT')
